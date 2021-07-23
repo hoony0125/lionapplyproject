@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+<div style="text-align: center;">
+<a href="{%url 'urlnamehome' %}"><img src="{% static 'images/로그인로고.jpg' %}" width="30%"></a>
+</div>
+<br>
+<br>
+<br>
+<br>
+    <div style="text-align: center;">
+        {% if messages %}
+        {% for m in messages %}
+            <div style="text-align: center; color: red;">
+                <strong>{{m.message}}</strong><br>
+            </div>
+        {% endfor %}
+        {% endif %}
+        <form action="{% url 'urlnamelogin' %}" method="POST">
+        {% csrf_token %}
+        {{views_login_form.as_p}}
+        <button type="submit" class="btn btn-warning">로그인</button>
+        </form>
+    </div>
+{% endblock %}

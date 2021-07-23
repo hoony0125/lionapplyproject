@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3 style="text-align: center;">지원자 현황</h3>
+    <h4 style="text-align: center;">현재 총 지원자는 <b>{{views_count}}명</b>입니다. </h4>
+    {% if user.is_staff %}              
+        {% for a in views_apply_all %}
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">이름: <a href="{% url 'urlnamedetail' a.id %}">{{a.name}}</a></li>
+              <li class="list-group-item">학번: {{a.student_id}}</li>
+              <li class="list-group-item">학과: {{a.major}}</li>
+              <li class="list-group-item">작성날짜: {{a.date}}</li>
+            </ul>
+        </div> 
+        {% endfor %}
+
+    {% elif user.is_authenticated %}
+        {% for a in views_apply_all %}
+        <br>
+            {% if user.student_id == a.student_id %}
+            <div class="card" style="width: 20rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">이름: <a href="{% url 'urlnamedetail' a.id %}">{{a.name}}</a></li>
+                  <li class="list-group-item">학번: {{a.student_id}}</li>
+                </ul>
+            </div>
+            {% else %}
+            <div style="text-indent: .5em;">예비사자</div>
+            {% endif %}
+            <div class="card" style="width: 20rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">학과: {{a.major}}</li>
+                  <li class="list-group-item">작성날짜: {{a.date}} </li>
+                </ul>
+            </div>
+        <br>
+        {% endfor %}
+    {% endif %}
+
+<div style="text-align: center;">
+{% if views_apply_all.has_previous %}
+    <a href="?page=1">처음</a>
+    <a href="?page={{views_apply_all.previous_page_number}}">이전</a>
+{% endif %}
+    <span>{{views_apply_all.number}}</span>
+    <span>of</span>
+    <span>{{views_apply_all.paginator.num_pages}}</span>
+{% if views_apply_all.has_next %}
+    <a href="?page={{views_apply_all.next_page_number}}">다음</a>
+    <a href="?page={{views_apply_all.paginator.num_pages}}">마지막</a>
+{% endif %}
+</div> <br>  
+{% endblock %}
+
+

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>수정페이지입니다.</h2><br>
+
+<div style="text-align: left; width: 12%; text-indent: .3em;">
+    <label for="formGroupExampleInput" class="form-label">이름</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" name="htmlname" value = "{{update_apply.name}}" readonly>
+</div><br>
+<div style="text-align: left; width: 12%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">학번</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="htmlstudent_id" value = "{{update_apply.student_id}}" readonly>
+</div><br>
+<div style="text-align: left; width: 12%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">학과</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="htmlmajor" value = "{{update_apply.major}}" readonly>
+</div><br>
+<div style="text-align: left; width: 90%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">q1</label><br>
+    <textarea name="htmlq1" id="" cols="100" rows="10">{{update_apply.q1}}</textarea><br>       
+</div><br>
+<div style="text-align: left; width: 90%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">q2</label><br>
+    <textarea name="htmlq2" id="" cols="100" rows="10">{{update_apply.q2}}</textarea><br>       
+</div><br>
+<div style="text-align: left; width: 90%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">q3</label><br>
+    <textarea name="htmlq3" id="" cols="100" rows="10">{{update_apply.q3}}</textarea><br>       
+</div><br>
+<div style="text-align: left; width: 90%; text-indent: .3em;">
+    <label for="formGroupExampleInput2" class="form-label">q4</label><br>
+    <textarea name="htmlq4" id="" cols="100" rows="10">{{update_apply.q4}}</textarea><br>       
+</div><br>
+<button type="submit" class="btn btn-warning">수정완료</button>
+<br>
+</form>
+</div>
+
+{% endblock %}

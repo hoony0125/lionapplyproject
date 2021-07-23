@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div style="text-align: center;">
+        <h3>{{views_apply.name}} 님의 지원서 입니다.</h3> <br>
+        {% if messages %}
+            {% for m in messages %}
+                <div style="text-align: center; color: red;">
+                    <strong>{{m.message}}</strong><br>
+                    수정버튼을 통해 본인의 지원서를 수정할 수 있습니다. 
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="card" style="width: 100%;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" style="text-align: left;">학번: {{views_apply.student_id}}</li>
+              <li class="list-group-item" style="text-align: left;">학과: {{views_apply.major}}</li>
+              <li class="list-group-item" style="text-align: left;">q1: {{views_apply.q1}}</li>
+              <li class="list-group-item" style="text-align: left;">q2: {{views_apply.q2}}</li>
+              <li class="list-group-item" style="text-align: left;">q3: {{views_apply.q3}}</li>
+              <li class="list-group-item" style="text-align: left;">q4: {{views_apply.q4}}</li>
+              <li class="list-group-item" style="text-align: left;">작성날짜: {{views_apply.date}}</li>
+            </ul>
+            <div class="card-body">
+              <a href="{%url 'urlnamehome'%}" class="card-link">홈</a>
+              <a href="{% url 'urlnameupdate' views_apply.id %}" class="card-link">수정하기</a>
+              <a href="{% url 'urlnamedelete' views_apply.id %}" class="card-link">삭제하기</a>
+            </div> 
+        </div>    
+         <br>
+        
+{% endblock %}
